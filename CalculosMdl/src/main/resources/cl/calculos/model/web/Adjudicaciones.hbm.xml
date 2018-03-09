@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.web.common.Adjudicaciones" schema="web" table="adjudicaciones" optimistic-lock="version">
+        <id name="adjudicacionId" type="int">
+            <column name="adjudicacion_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="operadoras" class="cl.calculos.model.web.common.Operadoras" lazy="false" fetch="select">
+            <column name="operadora_id" not-null="true">
+                <comment>operadora id</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="rbdConcursos" class="cl.calculos.model.web.common.RbdConcursos" lazy="false" fetch="select">
+            <column name="rbd_concurso_id" not-null="true">
+                <comment>rbd_concurso_id</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tecnologias" class="cl.calculos.model.web.common.Tecnologias" lazy="false" fetch="select">
+            <column name="tecnologia_id">
+                <comment>id tecnologia</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tipoAdjudicaciones" class="cl.calculos.model.web.common.TipoAdjudicaciones" lazy="false" fetch="select">
+            <column name="tipo_adj_id">
+                <comment>tipo de espera</comment>
+            </column>
+        </many-to-one>
+        <property name="precioAdjudicacionNu" type="big_decimal">
+            <column name="precio_adjudicacion_nu" precision="100" scale="4">
+                <comment>precio adjudicacion</comment>
+            </column>
+        </property>
+        <property name="velocidadNacionalNu" type="big_decimal">
+            <column name="velocidad_nacional_nu" precision="100" scale="4">
+                <comment>velocidad nacional</comment>
+            </column>
+        </property>
+        <property name="velocidadInternacionalNu" type="big_decimal">
+            <column name="velocidad_internacional_nu" precision="100" scale="4">
+                <comment>velocidad internacional</comment>
+            </column>
+        </property>
+        <property name="fechaAdjudicacion" type="date">
+            <column name="fecha_adjudicacion" length="13">
+                <comment>fecha en que se adjudico</comment>
+            </column>
+        </property>
+        <property name="fechaDesadjudicacion" type="date">
+            <column name="fecha_desadjudicacion" length="13">
+                <comment>fecha de desadjudicacion</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

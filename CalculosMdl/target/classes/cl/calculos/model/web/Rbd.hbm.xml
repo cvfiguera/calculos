@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-07-2017 14:39:15 by Hibernate Tools 5.2.0.CR1 -->
+<hibernate-mapping>
+    <class name="cl.calculos.model.web.common.Rbd" schema="web" table="rbd" optimistic-lock="version">
+        <id name="rbdId" type="int">
+            <column name="rbd_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="comunas" class="cl.calculos.model.web.common.Comunas" lazy="false" fetch="select">
+            <column name="comuna_id">
+                <comment>id comuna</comment>
+            </column>
+        </many-to-one>
+        <property name="rbdNu" type="java.lang.Long">
+            <column name="rbd_nu">
+                <comment>rbd</comment>
+            </column>
+        </property>
+        <property name="nombreEstablecimientoTx" type="string">
+            <column name="nombre_establecimiento_tx" length="250">
+                <comment>nombre establecimiento</comment>
+            </column>
+        </property>
+        <property name="direccionTx" type="string">
+            <column name="direccion_tx" length="250">
+                <comment>direccion</comment>
+            </column>
+        </property>
+        <property name="numAlumnosNu" type="java.lang.Long">
+            <column name="num_alumnos_nu">
+                <comment>numeros de alumnos</comment>
+            </column>
+        </property>
+        <property name="observacionTx" type="string">
+            <column name="observacion_tx" length="250">
+                <comment>observacion</comment>
+            </column>
+        </property>
+        <property name="anexoTx" type="string">
+            <column name="anexo_tx" length="2">
+                <comment>anexo</comment>
+            </column>
+        </property>
+        <set name="contactoses" table="contactos" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="rbd_id">
+                    <comment>id rbd</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.Contactos" />
+        </set>
+        <set name="rbdConcursoses" table="rbd_concursos" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="rbd_id">
+                    <comment>id rbd</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.RbdConcursos" />
+        </set>
+        <set name="contactoses_1" table="contactos" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="rbd_id">
+                    <comment>id rbd</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.Contactos" />
+        </set>
+    </class>
+</hibernate-mapping>

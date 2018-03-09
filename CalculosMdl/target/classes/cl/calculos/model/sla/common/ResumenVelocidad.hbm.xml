@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.sla.common.ResumenVelocidad" schema="sla" table="resumen_velocidad" optimistic-lock="version">
+        <id name="resumenVelocidadId" type="int">
+            <column name="resumen_velocidad_id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="archivos" class="cl.calculos.model.sla.common.Archivos" lazy="false" fetch="select">
+            <column name="archivo_id" />
+        </many-to-one>
+        <property name="fechaMuestraFe" type="date">
+            <column name="fecha_muestra_fe" length="13" />
+        </property>
+        <property name="velocidadSubidaDiariaNu" type="big_decimal">
+            <column name="velocidad_subida_diaria_nu" precision="100" scale="4" />
+        </property>
+        <property name="velocidadBajadaDiariaNu" type="big_decimal">
+            <column name="velocidad_bajada_diaria_nu" precision="100" scale="4" />
+        </property>
+        <property name="rbdNu" type="java.lang.Integer">
+            <column name="rbd_nu" />
+        </property>
+    </class>
+</hibernate-mapping>

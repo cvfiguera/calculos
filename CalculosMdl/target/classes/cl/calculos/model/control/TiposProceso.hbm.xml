@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.control.common.TiposProceso" schema="control" table="tipos_proceso" optimistic-lock="version">
+        <id name="tipoProcesoId" type="int">
+            <column name="tipo_proceso_id" />
+            <generator class="increment" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="250" />
+        </property>
+        <set name="procesoses" table="procesos" inverse="true" fetch="select" lazy="false">
+            <key>
+                <column name="tipo_proceso_id" />
+            </key>
+            <one-to-many class="cl.calculos.model.control.common.Procesos" />
+        </set>
+    </class>
+</hibernate-mapping>

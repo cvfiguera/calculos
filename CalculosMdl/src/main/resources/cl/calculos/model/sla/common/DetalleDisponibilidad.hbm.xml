@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.sla.common.DetalleDisponibilidad" schema="sla" table="detalle_disponibilidad" optimistic-lock="version">
+        <id name="detalleDispoId" type="int">
+            <column name="detalle_dispo_id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="archivos" class="cl.calculos.model.sla.common.Archivos" lazy="false" fetch="select">
+            <column name="archivo_id" />
+        </many-to-one>
+        <property name="fechaHoraMuestraFe" type="timestamp">
+            <column name="fecha_hora_muestra_fe" length="29" />
+        </property>
+        <property name="valorMuestraNu" type="java.lang.Integer">
+            <column name="valor_muestra_nu" />
+        </property>
+        <property name="rbdNu" type="java.lang.Integer">
+            <column name="rbd_nu" />
+        </property>
+    </class>
+</hibernate-mapping>

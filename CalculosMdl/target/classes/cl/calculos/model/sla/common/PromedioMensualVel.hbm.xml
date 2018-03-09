@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.sla.common.PromedioMensualVel" schema="sla" table="promedio_mensual_vel" optimistic-lock="version">
+        <id name="promedioId" type="int">
+            <column name="promedio_id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="archivos" class="cl.calculos.model.sla.common.Archivos" lazy="false" fetch="select">
+            <column name="archivo_id" />
+        </many-to-one>
+        <property name="promedioVelSubidaNu" type="big_decimal">
+            <column name="promedio_vel_subida_nu" precision="100" scale="4" />
+        </property>
+        <property name="promedioVelBajadaNu" type="big_decimal">
+            <column name="promedio_vel_bajada_nu" precision="100" scale="4" />
+        </property>
+        <property name="rbdNu" type="java.lang.Integer">
+            <column name="rbd_nu" />
+        </property>
+    </class>
+</hibernate-mapping>

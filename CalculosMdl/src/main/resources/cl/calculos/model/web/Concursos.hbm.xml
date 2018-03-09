@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.web.common.Concursos" schema="web" table="concursos" optimistic-lock="version">
+        <id name="concursoId" type="int">
+            <column name="concurso_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100">
+                <comment>nombre del concurso</comment>
+            </column>
+        </property>
+        <property name="fechaInicio" type="date">
+            <column name="fecha_inicio" length="13">
+                <comment>fecha de inicio</comment>
+            </column>
+        </property>
+        <property name="fechaTermino" type="date">
+            <column name="fecha_termino" length="13">
+                <comment>fecha de termino</comment>
+            </column>
+        </property>
+        <property name="comentarios" type="string">
+            <column name="comentarios" length="250">
+                <comment>comentario acerca del concurso</comment>
+            </column>
+        </property>
+        <set name="rbdConcursoses" table="rbd_concursos" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="concurso_id">
+                    <comment>id concurso</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.RbdConcursos" />
+        </set>
+    </class>
+</hibernate-mapping>

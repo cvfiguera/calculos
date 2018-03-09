@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.sla.common.Archivos" schema="sla" table="archivos" optimistic-lock="version">
+        <id name="archivoId" type="int">
+            <column name="archivo_id" />
+            <generator class="increment" />
+        </id>
+        <property name="nombreArchivoTx" type="string">
+            <column name="nombre_archivo_tx" length="100" />
+        </property>
+        <property name="versionNu" type="java.lang.Integer">
+            <column name="version_nu" />
+        </property>
+        <property name="fechaProcesamientoFe" type="timestamp">
+            <column name="fecha_procesamiento_fe" length="29" />
+        </property>
+		<property name="archivoControlId" type="java.lang.Integer">
+            <column name="archivo_control_id" />
+        </property>
+        <property name="operadora" type="java.lang.Integer">
+            <column name="operadora_id" />
+        </property>
+    </class>
+</hibernate-mapping>

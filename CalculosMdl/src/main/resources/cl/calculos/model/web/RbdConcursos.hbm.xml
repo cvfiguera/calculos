@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.web.common.RbdConcursos" schema="web" table="rbd_concursos" optimistic-lock="version">
+        <id name="rbdConcursoId" type="int">
+            <column name="rbd_concurso_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="concursos" class="cl.calculos.model.web.common.Concursos" lazy="false" fetch="select">
+            <column name="concurso_id">
+                <comment>id concurso</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="rbd" class="cl.calculos.model.web.common.Rbd" lazy="false" fetch="select">
+            <column name="rbd_id">
+                <comment>id rbd</comment>
+            </column>
+        </many-to-one>
+        <property name="marcaParque" type="string">
+            <column name="marca_parque">
+                <comment>esta es la marca inicial del parque por proyecto</comment>
+            </column>
+        </property>
+        <property name="fechaFin" type="date">
+            <column name="fecha_fin" length="13">
+                <comment>fecha de fin, si es null es vigente</comment>
+            </column>
+        </property>
+        <set name="instalacioneses" table="instalaciones" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="rbd_concurso_id" not-null="true">
+                    <comment>rbd_concurso id</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.Instalaciones" />
+        </set>
+        <set name="listaEsperas" table="lista_espera" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="rbd_concurso_id">
+                    <comment>rbd concurso id</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.ListaEspera" />
+        </set>
+        <set name="excepcionesPagos" table="excepciones_pago" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="rbd_concurso_id">
+                    <comment>id rbd concurso</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.ExcepcionesPago" />
+        </set>
+        <set name="adjudicacioneses" table="adjudicaciones" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="rbd_concurso_id" not-null="true">
+                    <comment>rbd_concurso_id</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.Adjudicaciones" />
+        </set>
+    </class>
+</hibernate-mapping>

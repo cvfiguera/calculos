@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 08-03-2018 17:23:58 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="cl.calculos.model.fact.common.OpeTmp" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="ope_tmp">
+        <id name="opeTmpId" type="int">
+            <column name="ope_tmp_id"/>
+            <generator class="increment"/>
+        </id>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
+            <column length="150" name="nombre"/>
+        </property>
+    </class>
+</hibernate-mapping>

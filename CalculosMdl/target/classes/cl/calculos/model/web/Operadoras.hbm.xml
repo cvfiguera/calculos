@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.web.common.Operadoras" schema="web" table="operadoras" optimistic-lock="version">
+        <id name="operadoraId" type="int">
+            <column name="operadora_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreSocialTx" type="string">
+            <column name="nombre_social_tx" length="250">
+                <comment>nombre social</comment>
+            </column>
+        </property>
+        <property name="aliasTx" type="string">
+            <column name="alias_tx" length="250">
+                <comment>alias</comment>
+            </column>
+        </property>
+        <property name="observacionTx" type="string">
+            <column name="observacion_tx" length="250">
+                <comment>observacion</comment>
+            </column>
+        </property>
+        <property name="rut" type="big_decimal">
+            <column name="rut" precision="100" scale="4">
+                <comment>rut de la operadora</comment>
+            </column>
+        </property>
+        <property name="usuarioSftp" type="string">
+            <column name="usuario_sftp" />
+        </property>
+    </class>
+</hibernate-mapping>

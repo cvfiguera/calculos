@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.web.common.ConectadoEstados" schema="web" table="conectado_estados" optimistic-lock="version">
+        <id name="conectadoEstadoId" type="int">
+            <column name="conectado_estado_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="conectadoEstadoTx" type="string">
+            <column name="conectado_estado_tx" length="250">
+                <comment>conectado estado</comment>
+            </column>
+        </property>
+        <property name="padreId" type="java.lang.Integer">
+            <column name="padre_id" />
+        </property>
+        <set name="rbdEstadoses" table="rbd_estados" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="conectado_id" />
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.RbdEstados" />
+        </set>
+    </class>
+</hibernate-mapping>

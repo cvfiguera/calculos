@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 08-03-2018 17:23:58 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="cl.calculos.model.fact.common.FactTmp" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="fact_tmp">
+        <id name="factTmpId" type="int">
+            <column name="fact_tmp_id"/>
+            <generator class="increment"/>
+        </id>
+        <property generated="never" lazy="false" name="rbdId" optimistic-lock="true" type="int" unique="false">
+            <column name="rbd_id" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="rbd" optimistic-lock="true" type="int" unique="false">
+            <column name="rbd" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="operadoraId" optimistic-lock="true" type="int" unique="false">
+            <column name="operadora_id" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="anio" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="anio" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="mes" optimistic-lock="true" type="string" unique="false">
+            <column length="2" name="mes" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="conexionId" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="conexion_id"/>
+        </property>
+        <property generated="never" lazy="false" name="adjudicacionId" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="adjudicacion_id"/>
+        </property>
+        <property generated="never" lazy="false" name="mineducId" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="mineduc_id"/>
+        </property>
+        <property generated="never" lazy="false" name="enPrefactura" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="en_prefactura"/>
+        </property>
+        <property generated="never" lazy="false" name="enResumenDispo" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="en_resumen_dispo"/>
+        </property>
+        <property generated="never" lazy="false" name="enResumenVel" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="en_resumen_vel"/>
+        </property>
+        <property generated="never" lazy="false" name="bitacoraAprob" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="bitacora_aprob"/>
+        </property>
+    </class>
+</hibernate-mapping>

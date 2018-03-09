@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 08-03-2018 17:23:58 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="cl.calculos.model.fact.common.DetRbdTmp" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="det_rbd_tmp">
+        <id name="detRbdTmp" type="int">
+            <column name="det_rbd_tmp"/>
+            <generator class="increment"/>
+        </id>
+        <many-to-one class="cl.calculos.model.fact.common.FactTmp" embed-xml="true" fetch="select" insert="true" name="factTmp" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="fact_tmp_id"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="rbdId" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="rbd_id"/>
+        </property>
+        <property generated="never" lazy="false" name="NMuestra" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="n_muestra"/>
+        </property>
+        <property generated="never" lazy="false" name="fechaHora" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="22" name="fecha_hora"/>
+        </property>
+        <property generated="never" lazy="false" name="dispo" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="dispo"/>
+        </property>
+        <property generated="never" lazy="false" name="VBajada" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="v_bajada" precision="100" scale="4"/>
+        </property>
+        <property generated="never" lazy="false" name="VSubida" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="v_subida" precision="100" scale="4"/>
+        </property>
+        <property generated="never" lazy="false" name="feriado" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="feriado"/>
+        </property>
+        <property generated="never" lazy="false" name="bitacora" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="bitacora"/>
+        </property>
+    </class>
+</hibernate-mapping>

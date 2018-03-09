@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 08-03-2018 17:23:58 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="cl.calculos.model.fact.common.ExcepTmp" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="excep_tmp">
+        <id name="excepTmpId" type="int">
+            <column name="excep_tmp_id"/>
+            <generator class="increment"/>
+        </id>
+        <many-to-one class="cl.calculos.model.fact.common.FactTmp" embed-xml="true" fetch="select" insert="true" name="factTmp" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="fact_tmp_id"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="fechaIni" optimistic-lock="true" type="date" unique="false">
+            <column length="13" name="fecha_ini"/>
+        </property>
+        <property generated="never" lazy="false" name="fechaFin" optimistic-lock="true" type="date" unique="false">
+            <column length="13" name="fecha_fin"/>
+        </property>
+        <property generated="never" lazy="false" name="pago" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="pago"/>
+        </property>
+    </class>
+</hibernate-mapping>

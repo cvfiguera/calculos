@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.sla.common.Prefacturas2" schema="sla" table="prefacturas2" optimistic-lock="version">
+        <id name="prefacturaid" type="int">
+            <column name="prefacturaid" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="archivos" class="cl.calculos.model.sla.common.Archivos" lazy="false" fetch="select">
+            <column name="archivo_id" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

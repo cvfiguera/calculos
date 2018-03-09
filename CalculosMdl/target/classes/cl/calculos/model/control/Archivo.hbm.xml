@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.control.common.Archivo" schema="control" table="archivo">
+        <composite-id name="id" class="cl.calculos.model.control.common.ArchivoId">
+            <key-property name="archivoId" type="int">
+                <column name="archivo_id" />
+            </key-property>
+            <key-property name="nombreArchivo" type="string">
+                <column name="nombre_archivo" length="250" />
+            </key-property>
+        </composite-id>
+        <version name="version" type="int">
+            <column name="version" not-null="true">
+                <comment>Version</comment>
+            </column>
+        </version>
+        <many-to-one name="archivosTipos" class="cl.calculos.model.control.common.ArchivosTipos" lazy="false" fetch="select">
+            <column name="archivo_tipo_id" />
+        </many-to-one>
+        <property name="operadora" type="int">
+            <column name="operadora_id" />
+        </property>
+        <property name="ano" type="string">
+            <column name="ano" length="4" />
+        </property>
+        <property name="mes" type="string">
+            <column name="mes" length="2" />
+        </property>
+        <property name="fechaFtp" type="date">
+            <column name="fecha_ftp" length="13" />
+        </property>
+        <property name="ruta" type="string">
+            <column name="ruta" length="250">
+                <comment>Ruta del Archivo</comment>
+            </column>
+        </property>
+        <set name="procesosDetalles" table="procesos_detalle" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="archivo_id" />
+                <column name="nombre_archivo" length="250" />
+            </key>
+            <one-to-many class="cl.calculos.model.control.common.ProcesosDetalle" />
+        </set>
+    </class>
+</hibernate-mapping>

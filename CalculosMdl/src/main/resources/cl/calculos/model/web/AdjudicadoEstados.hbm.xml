@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.web.common.AdjudicadoEstados" schema="web" table="adjudicado_estados" optimistic-lock="version">
+        <id name="adjudicadoEstadoId" type="int">
+            <column name="adjudicado_estado_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="adjudicadoEstados" class="cl.calculos.model.web.common.AdjudicadoEstados" lazy="false" fetch="select">
+            <column name="adj_adjudicado_estado_id">
+                <comment>id adjudicado estado</comment>
+            </column>
+        </many-to-one>
+        <property name="adjudicadoEstadoTx" type="string">
+            <column name="adjudicado_estado_tx" length="250">
+                <comment>estado adjudicacion</comment>
+            </column>
+        </property>
+        <set name="rbdEstadoses" table="rbd_estados" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="adjudicado_id" />
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.RbdEstados" />
+        </set>
+        <set name="adjudicadoEstadoses" table="adjudicado_estados" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="adj_adjudicado_estado_id">
+                    <comment>id adjudicado estado</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.AdjudicadoEstados" />
+        </set>
+        <set name="adjudicadoEstadoses_1" table="adjudicado_estados" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="adj_adjudicado_estado_id">
+                    <comment>id adjudicado estado</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.AdjudicadoEstados" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.web.common.MineducEstados" schema="web" table="mineduc_estados" optimistic-lock="version">
+        <id name="mineducEstadoId" type="int">
+            <column name="mineduc_estado_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="mineducEstadoTx" type="string">
+            <column name="mineduc_estado_tx" length="250">
+                <comment>estado mineduc</comment>
+            </column>
+        </property>
+        <property name="padreId" type="java.lang.Integer">
+            <column name="padre_id" />
+        </property>
+        <set name="rbdEstadoses" table="rbd_estados" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="mineduc_id" />
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.RbdEstados" />
+        </set>
+    </class>
+</hibernate-mapping>

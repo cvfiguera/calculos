@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.web.common.RbdEstados" schema="web" table="rbd_estados" optimistic-lock="version">
+        <id name="rbdEstadoId" type="int">
+            <column name="rbd_estado_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="adjudicadoEstados" class="cl.calculos.model.web.common.AdjudicadoEstados" lazy="false" fetch="select">
+            <column name="adjudicado_id" />
+        </many-to-one>
+        <many-to-one name="conectadoEstados" class="cl.calculos.model.web.common.ConectadoEstados" lazy="false" fetch="select">
+            <column name="conectado_id" />
+        </many-to-one>
+        <many-to-one name="mineducEstados" class="cl.calculos.model.web.common.MineducEstados" lazy="false" fetch="select">
+            <column name="mineduc_id" />
+        </many-to-one>
+        <property name="rbdConcursoId" type="java.lang.Integer">
+            <column name="rbd_concurso_id">
+                <comment>id rbd concurso</comment>
+            </column>
+        </property>
+        <property name="fechaI" type="date">
+            <column name="fecha_i" length="13" not-null="true">
+                <comment>fecha de inicio</comment>
+            </column>
+        </property>
+        <property name="fechaF" type="date">
+            <column name="fecha_f" length="13">
+                <comment>fecha final</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

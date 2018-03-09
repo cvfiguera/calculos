@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.control.common.DetalleError" schema="control" table="detalle_error" optimistic-lock="version">
+        <id name="detalleErrorId" type="int">
+            <column name="detalle_error_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="archivo" class="cl.calculos.model.control.common.Archivo" lazy="false" fetch="select">
+            <column name="archivo_id" />
+            <column name="nombre_archivo" length="250" />
+        </many-to-one>
+        <many-to-one name="errorCodigos" class="cl.calculos.model.control.common.ErrorCodigos" lazy="false" fetch="select">
+            <column name="error_codigo_id" />
+        </many-to-one>
+        <property name="linea" type="java.lang.Integer">
+            <column name="linea" />
+        </property>
+        <property name="posicion" type="java.lang.Integer">
+            <column name="posicion" />
+        </property>
+        <property name="rbd" type="java.lang.Integer">
+            <column name="rbd" />
+        </property>
+        <property name="valor" type="string">
+            <column name="valor" length="250" />
+        </property>
+    </class>
+</hibernate-mapping>

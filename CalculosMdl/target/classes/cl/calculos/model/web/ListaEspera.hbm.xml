@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.web.common.ListaEspera" schema="web" table="lista_espera" optimistic-lock="version">
+        <id name="listaEsperaId" type="int">
+            <column name="lista_espera_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="operadoras" class="cl.calculos.model.web.common.Operadoras" lazy="false" fetch="select">
+            <column name="operadora_id">
+                <comment>operadora id</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="rbdConcursos" class="cl.calculos.model.web.common.RbdConcursos" lazy="false" fetch="select">
+            <column name="rbd_concurso_id">
+                <comment>rbd concurso id</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tecnologias" class="cl.calculos.model.web.common.Tecnologias" lazy="false" fetch="select">
+            <column name="tecnologia_id">
+                <comment>id tecnologia</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="tipoAdjudicaciones" class="cl.calculos.model.web.common.TipoAdjudicaciones" lazy="false" fetch="select">
+            <column name="tipo_adj_id">
+                <comment>tipo de espera</comment>
+            </column>
+        </many-to-one>
+        <property name="velocidadNacionalNu" type="big_decimal">
+            <column name="velocidad_nacional_nu" precision="100" scale="4">
+                <comment>velociada nacional</comment>
+            </column>
+        </property>
+        <property name="velocidadInternacionalNu" type="big_decimal">
+            <column name="velocidad_internacional_nu" precision="100" scale="4">
+                <comment>velocidad internacional</comment>
+            </column>
+        </property>
+        <property name="precioNu" type="big_decimal">
+            <column name="precio_nu" precision="100" scale="4">
+                <comment>precio</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.pool_size">100</property>
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<property name="hibernate.default_schema">web</property>
+        
+        <mapping resource="cl/calculos/model/web/Tecnologias.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/MineducEstados.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/Comunas.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/Regiones.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/Adjudicaciones.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/RbdConcursos.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/TipoAdjudicaciones.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/Operadoras.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/ListaEspera.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/Instalaciones.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/RbdEstados.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/Rbd.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/ConectadoEstados.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/Contactos.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/InstalacionExcepciones.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/ExcepcionesPago.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/Concursos.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/AdjudicadoEstados.hbm.xml" />
+
+		<mapping resource="cl/calculos/model/web/EscuelasView.hbm.xml"/>
+		<mapping resource="cl/calculos/model/web/EESView.hbm.xml" />
+		<mapping resource="cl/calculos/model/web/FASView.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

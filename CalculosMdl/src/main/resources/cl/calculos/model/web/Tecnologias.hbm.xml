@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.web.common.Tecnologias" schema="web" table="tecnologias" optimistic-lock="version">
+        <id name="tecnologiaId" type="int">
+            <column name="tecnologia_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreTx" type="string">
+            <column name="nombre_tx" length="250">
+                <comment>nombre de la tecnologia</comment>
+            </column>
+        </property>
+        <property name="observacionTx" type="string">
+            <column name="observacion_tx" length="250">
+                <comment>observacion</comment>
+            </column>
+        </property>
+        <set name="instalacioneses" table="instalaciones" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="tecnologia_id">
+                    <comment>id tecnologia</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.Instalaciones" />
+        </set>
+        <set name="adjudicacioneses" table="adjudicaciones" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="tecnologia_id">
+                    <comment>id tecnologia</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.Adjudicaciones" />
+        </set>
+        <set name="listaEsperas" table="lista_espera" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="tecnologia_id">
+                    <comment>id tecnologia</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.ListaEspera" />
+        </set>
+    </class>
+</hibernate-mapping>

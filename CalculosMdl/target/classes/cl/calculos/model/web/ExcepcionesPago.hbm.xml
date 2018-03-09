@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.web.common.ExcepcionesPago" schema="web" table="excepciones_pago" optimistic-lock="version">
+        <id name="excepcionPagoId" type="int">
+            <column name="excepcion_pago_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="rbdConcursos" class="cl.calculos.model.web.common.RbdConcursos" lazy="false" fetch="select">
+            <column name="rbd_concurso_id">
+                <comment>id rbd concurso</comment>
+            </column>
+        </many-to-one>
+        <property name="fechaI" type="time">
+            <column name="fecha_i" length="15">
+                <comment>fecha de inicio</comment>
+            </column>
+        </property>
+        <property name="fechaF" type="time">
+            <column name="fecha_f" length="15">
+                <comment>fecha de fin</comment>
+            </column>
+        </property>
+        <property name="motivo" type="string">
+            <column name="motivo" length="250">
+                <comment>motivo</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

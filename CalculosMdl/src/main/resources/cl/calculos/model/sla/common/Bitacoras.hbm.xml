@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping schema="sla">
+    <class name="cl.calculos.model.sla.common.Bitacoras" table="bitacoras" optimistic-lock="version">
+        <id name="bitacoraId" type="int">
+            <column name="bitacora_id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="archivos" class="cl.calculos.model.sla.common.Archivos" lazy="false" fetch="select">
+            <column name="archivo_id" />
+        </many-to-one>
+        <property name="fechaInicioFe" type="date">
+            <column name="fecha_inicio_fe" length="13" />
+        </property>
+        <property name="fechaFinFe" type="date">
+            <column name="fecha_fin_fe" length="13" />
+        </property>
+        <property name="horaInicioTi" type="time">
+            <column name="hora_inicio_ti" length="15" />
+        </property>
+        <property name="horaFinTi" type="time">
+            <column name="hora_fin_ti" length="15" />
+        </property>
+        <property name="diaSemanaNu" type="java.lang.Integer">
+            <column name="dia_semana_nu" />
+        </property>
+        <property name="rbdNu" type="java.lang.Integer">
+            <column name="rbd_nu" />
+        </property>
+    </class>
+</hibernate-mapping>

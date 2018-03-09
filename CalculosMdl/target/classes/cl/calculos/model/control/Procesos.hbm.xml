@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.control.common.Procesos" schema="control" table="procesos" optimistic-lock="version">
+        <id name="procesoId" type="int">
+            <column name="proceso_id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="tiposProceso" class="cl.calculos.model.control.common.TiposProceso" lazy="false" fetch="select">
+            <column name="tipo_proceso_id" />
+        </many-to-one>
+        <property name="usuario" type="java.lang.Integer">
+            <column name="usuario_id" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="13" />
+        </property>
+        <property name="estatus" type="java.lang.Integer">
+            <column name="estatus" />
+        </property>
+        <set name="procesosDetalles" table="procesos_detalle" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="proceso_id" />
+            </key>
+            <one-to-many class="cl.calculos.model.control.common.ProcesosDetalle" />
+        </set>
+    </class>
+</hibernate-mapping>

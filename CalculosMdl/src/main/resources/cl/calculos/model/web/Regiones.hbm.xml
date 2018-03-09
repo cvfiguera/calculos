@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.web.common.Regiones" schema="web" table="regiones" optimistic-lock="version">
+        <id name="regionId" type="int">
+            <column name="region_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreRegionTx" type="string">
+            <column name="nombre_region_tx" length="250">
+                <comment>nombre de la region</comment>
+            </column>
+        </property>
+        <property name="numeroRegionTx" type="string">
+            <column name="numero_region_tx" length="4">
+                <comment>numero de region</comment>
+            </column>
+        </property>
+        <set name="comunases" table="comunas" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="region_id">
+                    <comment>id regiones</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.Comunas" />
+        </set>
+        <set name="comunases_1" table="comunas" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="region_id">
+                    <comment>id regiones</comment>
+                </column>
+            </key>
+            <one-to-many class="cl.calculos.model.web.common.Comunas" />
+        </set>
+    </class>
+</hibernate-mapping>

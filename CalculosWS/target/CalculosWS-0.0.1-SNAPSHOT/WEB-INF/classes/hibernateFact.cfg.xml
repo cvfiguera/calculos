@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+       "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.pool_size">100</property>
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<property name="hibernate.default_schema">calculos</property>
+        <mapping resource="cl/calculos/model/fact/ExcepTmp.hbm.xml" />
+        <mapping resource="cl/calculos/model/fact/FactTmp.hbm.xml" />
+        <mapping resource="cl/calculos/model/fact/InstTmp.hbm.xml" />
+        <mapping resource="cl/calculos/model/fact/OpeTmp.hbm.xml" />
+        <mapping resource="cl/calculos/model/fact/TecnoTmp.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

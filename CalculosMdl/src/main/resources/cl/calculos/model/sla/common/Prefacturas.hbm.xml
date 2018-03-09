@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cl.calculos.model.sla.common.Prefacturas" schema="sla" table="prefacturas" optimistic-lock="version">
+        <id name="prefacturaId" type="int">
+            <column name="prefactura_id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="archivos" class="cl.calculos.model.sla.common.Archivos" lazy="false" fetch="select">
+            <column name="archivo_id" />
+        </many-to-one>
+        <property name="diasFacturadosNu" type="java.lang.Integer">
+            <column name="dias_facturados_nu" />
+        </property>
+        <property name="promDiasFacturadosNu" type="big_decimal">
+            <column name="prom_dias_facturados_nu" precision="100" scale="4" />
+        </property>
+        <property name="valorMenAdjudicadoNu" type="big_decimal">
+            <column name="valor_men_adjudicado_nu" precision="100" scale="4" />
+        </property>
+        <property name="valorMesNetoNu" type="big_decimal">
+            <column name="valor_mes_neto_nu" precision="100" scale="4" />
+        </property>
+        <property name="valorMesNu" type="big_decimal">
+            <column name="valor_mes_nu" precision="100" scale="4" />
+        </property>
+        <property name="diasMesNu" type="java.lang.Integer">
+            <column name="dias_mes_nu" />
+        </property>
+        <property name="velocidadNu" type="big_decimal">
+            <column name="velocidad_nu" precision="100" scale="4" />
+        </property>
+        <property name="disponibilidadNu" type="big_decimal">
+            <column name="disponibilidad_nu" precision="100" scale="4" />
+        </property>
+        <property name="anexoTx" type="string">
+            <column name="anexo_tx" length="3" />
+        </property>
+        <property name="observacionTx" type="string">
+            <column name="observacion_tx" length="2000" />
+        </property>
+        <property name="fechaAltaServicioFe" type="date">
+            <column name="fecha_alta_servicio_fe" length="13" />
+        </property>
+        <property name="numFasTx" type="string">
+            <column name="num_fas_tx" length="20" />
+        </property>
+        <property name="rbdNu" type="java.lang.Integer">
+            <column name="rbd_nu" />
+        </property>
+    </class>
+</hibernate-mapping>
